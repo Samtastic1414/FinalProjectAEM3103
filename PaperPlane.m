@@ -74,12 +74,26 @@
     vmin=IV(1);vmax=IV(3);
 
     fpamin=IFPA(1);fpamax=IFPA(3);
+    Vrand=zeros(100)*nan;
+    FPArand=zeros(100)*nan;
+    color = ['r', 'g', 'b', 'w', 'y'];
 
-    Vrand=vmin + (vmax-vmin)*rand(1);
+
+    % Plots 100 diffrent flights
+    figure
+    hold on
+    for i =1:100
+
+        Vrand(i)=vmin + (vmax-vmin)*rand(1);
+        FPArand(i)=fpamin + (fpamax-fpamin)*rand(1);
+        xo		=	[Vrand(i);FPArand(i);H;R];
+        [tfpar, xfpar] = ode23('EqMotion',tspan,xo);
+
+        plot(xfpar(:,4),xfpar(:,3),color(mod(i,4)+1));
+    end
 
 
-    xo		=	[V;IFPA(1);H;R];
-
+    
 
 % Make sure to change white to black before submit
     figure
@@ -92,6 +106,7 @@
     
     plot(xh(:,4),xh(:,3),'r',xi(:,4),xi(:,3),'w',xj(:,4),xj(:,3),'g')
 	xlabel('Range, m'), ylabel('Height, m'), grid
+
 
 	% plot(ta,xa(:,2),tb,xb(:,2),tc,xc(:,2),td,xd(:,2))
 	% xlabel('Time, s'), ylabel('Flight Path Angle, rad'), grid
