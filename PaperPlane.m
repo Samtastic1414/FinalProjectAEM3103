@@ -1,7 +1,11 @@
 %	Example 1.3-1 Paper Airplane Flight Path
 %	Copyright 2005 by Robert Stengel
 %	August 23, 2005
-
+clear
+clc
+N=100;
+averageHeight=zeros(101);
+averageRange=zeros(101);
 	global CL CD S m g rho	
 	S		=	0.017;			% Reference Area, m^2
 	AR		=	0.86;			% Wing Aspect Ratio
@@ -71,29 +75,49 @@
 
 % Random Parameters Ranges
 
-    vmin=IV(1);vmax=IV(3);
+    vmin=IV(1); vmax=IV(3);
 
-    fpamin=IFPA(1);fpamax=IFPA(3);
-    Vrand=zeros(100)*nan;
-    FPArand=zeros(100)*nan;
+    fpamin=IFPA(1); fpamax=IFPA(3);
+
+    hmin=2; hmax=6;
+
+    Rmin=2; Rmax=6;
+
+    Rrand=zeros(N)*nan;
+    Hrand=zeros(N)*nan;
+    Vrand=zeros(N)*nan;
+    FPArand=zeros(N)*nan;
     color = ['r', 'g', 'b', 'w', 'y'];
 
 
     % Plots 100 diffrent flights
     figure
     hold on
-    for i =1:100
+    for i =1:N
 
         Vrand(i)=vmin + (vmax-vmin)*rand(1);
         FPArand(i)=fpamin + (fpamax-fpamin)*rand(1);
+        Rrand(i)=Rmin + (Rmax-Rmin)*rand(1);
+        Hrand(i)=hmin + (hmax-hmin)*rand(1);
+
         xo		=	[Vrand(i);FPArand(i);H;R];
+
         [tfpar, xfpar] = ode23('EqMotion',tspan,xo);
 
-        plot(xfpar(:,4),xfpar(:,3),color(mod(i,4)+1));
+        averageHeight(1:length(xfpar),i)=averageHeight(1:length(xfpar),i)/i+xfpar(:,3);
+        averageRange(1:length(xfpar),i)=averageRange(1:length(xfpar),i)/i+xfpar(:,4);
+
+        plot(xfpar(:,4),xfpar(:,3),color(mod(i,5)+1));
     end
+    xlabel('Range, m'), ylabel('Height, m'), grid
 
+        averageRange=sum(averageRange,2)/N;
+        averageHeight=sum(averageHeight,2)/N;
 
-    
+        FlightPath(:,1)=averageRange;
+        FlightPath(:,2)=averageHeight;
+
+        plot(FlightPath(:,1),FlightPath(:,2),'*r')
 
 % Make sure to change white to black before submit
     figure
