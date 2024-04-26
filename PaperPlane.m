@@ -120,12 +120,23 @@ averageTime=zeros(N+1);
 
         FlightPath=cat(2,averageTime,averageHeight,averageRange);
 
-        figure
+        figure 
+        hold on
         plot(FlightPath(:,1),FlightPath(:,2))
+        p = polyfit(FlightPath(:,1),FlightPath(:,2),13);
+        y=polyval(p,tspan);
+        plot(tspan,y)
+
         title("Time vs Height"),xlabel('Time, s'), ylabel('Height, m'), grid
 
         figure
+        hold on
         plot(FlightPath(:,1),FlightPath(:,3))
+
+        p = polyfit(FlightPath(:,1),FlightPath(:,3),13);
+        y=polyval(p,tspan);
+        plot(tspan,y)
+
         title("Time vs Range"),xlabel('Time, s'), ylabel('Range, m'), grid
 
 % Make sure to change white to black before submit
