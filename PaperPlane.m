@@ -4,8 +4,9 @@
 clear
 clc
 N=100;
-averageHeight=zeros(101);
-averageRange=zeros(101);
+averageHeight=zeros(N+1);
+averageRange=zeros(N+1);
+averageTime=zeros(N+1);
 	global CL CD S m g rho	
 	S		=	0.017;			% Reference Area, m^2
 	AR		=	0.86;			% Wing Aspect Ratio
@@ -35,7 +36,7 @@ averageRange=zeros(101);
 	R		=	0;			% Initial Range, m
 	to		=	0;			% Initial Time, sec
 	tf		=	6;			% Final Time, sec
-	tspan	=	[to tf];
+	tspan	=	[to:.06:tf];
 	xo		=	[V;Gam;H;R];
 	[ta,xa]	=	ode23('EqMotion',tspan,xo);
 	
@@ -104,6 +105,8 @@ averageRange=zeros(101);
 
         [tfpar, xfpar] = ode23('EqMotion',tspan,xo);
 
+
+        averageTime(1:length(tfpar),i)=averageTime(1:length(tfpar),i)/i+tfpar(:,1);
         averageHeight(1:length(xfpar),i)=averageHeight(1:length(xfpar),i)/i+xfpar(:,3);
         averageRange(1:length(xfpar),i)=averageRange(1:length(xfpar),i)/i+xfpar(:,4);
 
@@ -111,13 +114,19 @@ averageRange=zeros(101);
     end
     xlabel('Range, m'), ylabel('Height, m'), grid
 
+        averageTime=sum(averageTime,2)/N;
         averageRange=sum(averageRange,2)/N;
         averageHeight=sum(averageHeight,2)/N;
 
-        FlightPath(:,1)=averageRange;
-        FlightPath(:,2)=averageHeight;
+        FlightPath=cat(2,averageTime,averageHeight,averageRange);
 
-        plot(FlightPath(:,1),FlightPath(:,2),'*r')
+        figure
+        plot(FlightPath(:,1),FlightPath(:,2))
+        title("Time vs Height"),xlabel('Time, s'), ylabel('Height, m'), grid
+
+        figure
+        plot(FlightPath(:,1),FlightPath(:,3))
+        title("Time vs Range"),xlabel('Time, s'), ylabel('Range, m'), grid
 
 % Make sure to change white to black before submit
     figure
