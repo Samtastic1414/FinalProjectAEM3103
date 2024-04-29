@@ -68,12 +68,12 @@ averageTime=zeros(N+1);
     figure
     subplot(2,1,1)
     
-	plot(xe(:,4),xe(:,3),'r',xf(:,4),xf(:,3),'w',xg(:,4),xg(:,3),'g')
+	plot(xe(:,4),xe(:,3),'r',xf(:,4),xf(:,3),'k',xg(:,4),xg(:,3),'g')
 	title("Time vs Height for diffrent Velocities"),xlabel('Range, m'), ylabel('Height, m'), grid
 
     subplot(2,1,2)
     
-    plot(xh(:,4),xh(:,3),'r',xi(:,4),xi(:,3),'w',xj(:,4),xj(:,3),'g')
+    plot(xh(:,4),xh(:,3),'r',xi(:,4),xi(:,3),'k',xj(:,4),xj(:,3),'g')
 	title("Time vs Height for diffrent FPA"),xlabel('Range, m'), ylabel('Height, m'), grid
 
 % Random Parameters Ranges
@@ -84,7 +84,7 @@ averageTime=zeros(N+1);
 
     Vrand=zeros(N)*nan;
     FPArand=zeros(N)*nan;
-    color = ['r', 'g', 'b', 'w', 'y'];
+    color = ['r', 'g', 'b', 'k', 'y'];
 
 
     % Plots 100 diffrent flights
