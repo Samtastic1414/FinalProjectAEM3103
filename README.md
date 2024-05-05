@@ -25,7 +25,7 @@
 The flights with max FPA and Velocity flew in a loop to start the flight.
 The average flight (Red Stars) created a small hump in the begining of the flight that slowly evened out as the flight went on.
 
-  Then I created two plots of the average flight ((Range v Time) and (Height v Time)). Useing these graphs I fit a polynomial to each graph. Useing the polynomials I found the dirivative of both functions using (Num_Der_Cent.m). I Then ploted the dirivtiaves of both polynomials.
+  Then I created two plots of the average flight ((Range v Time) and (Height v Time)). Useing these graphs I fit a polynomial to each graph. Useing the polynomials I found the dirivative of both functions using [](Num_Der_Cent.m). I Then ploted the dirivtiaves of both polynomials.
 
   Range v Time is a fairly linear plot, but Height v Time is a bit more wavey.
 
