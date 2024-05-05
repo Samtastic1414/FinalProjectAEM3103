@@ -15,9 +15,24 @@
   Summarized what was accomplished in this study.  Describe 2-4 observations from simulating the flight path.
   Reference the figures below as needed.
 
-  I created 100 diffrent flights with varying inital velocities [+2, +7.5] m/s and flight path angles [-0.5, +0.4] rad.
-  I then averaged all of the flights to get an average (Expected) flight.
+  This study created several posible flights for a paper airplane. I created a simulation of flights with diffrent flight path angles, and flights with diffrent starting velocities. Then I compaired the results of each flight to see how changing each variable compaired to eachother.
 
+  For changing velocities when v is maximized (Green line) the plane quickly increases in altitude, then stalls before fluttering to the ground.
+  Both the nominal flight path angle and velocity the flights are mostly linear, other flights flutter alot, but theis flights are verry consistant
+
+  Then I created 100 diffrent flights with varying inital velocities [+2, +7.5] m/s and flight path angles [-0.5, +0.4] rad. I then averaged all of the flights range, time, and height to get an average (Expected) flight.
+
+The flights with max FPA and Velocity flew in a loop to start the flight.
+The average flight (Red Stars) created a small hump in the begining of the flight that slowly evened out as the flight went on.
+
+  Then I created two plots of the average flight ((Range v Time) and (Height v Time)). Useing these graphs I fit a polynomial to each graph. Useing the polynomials I found the dirivative of both functions using [Num_Der_Cent](Num_Der_Cent.m). I Then ploted the dirivtiaves of both polynomials.
+
+  Range v Time is a fairly linear plot, but Height v Time is a bit more wavey.
+
+  For the dirivatives for each graph 
+  Range' v Time is a negative sin wave that is dampened and converges to 3.5
+  Height' v Time is a cos wave that is dampened to -.8
+  
   *If the analysis falls short of the goal, this is your chance to explain what was done or what were the barriers.*
  
   # Code Listing
@@ -42,11 +57,3 @@
   Briefly describe what is being shown in the figure.
 
   (Below are for teams of 2-3 people)
-
-  # Animation
-  ## Point-Mass Animation
-  <Animated GIF showing 2D trajectory for nominal and the scenario (V=7.5 m/s, Gam=+0.4 rad)>
-  
-  (Below are for teams of 3 people)
-  ## Graphical Animation
-  <Same as the above animation, except that the moving *point* should be a 2D drawing of an airplane, drawn using CAD>
