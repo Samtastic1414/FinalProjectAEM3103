@@ -69,12 +69,14 @@ averageTime=zeros(N+1);
     subplot(2,1,1)
     
 	plot(xe(:,4),xe(:,3),'r',xf(:,4),xf(:,3),'k',xg(:,4),xg(:,3),'g')
-	title("Time vs Height for diffrent Velocities"),xlabel('Range, m'), ylabel('Height, m'), grid
+	title("Height vs Time for diffrent Velocities"),xlabel('Range, m'), ylabel('Height, m'), grid
+    legend("Min velocity","Nominal velocity","Max velocity")
 
     subplot(2,1,2)
     
     plot(xh(:,4),xh(:,3),'r',xi(:,4),xi(:,3),'k',xj(:,4),xj(:,3),'g')
-	title("Time vs Height for diffrent FPA"),xlabel('Range, m'), ylabel('Height, m'), grid
+	title("Height vs Time for diffrent FPA"),xlabel('Range, m'), ylabel('Height, m'), grid
+    legend("Min FPA","Nominal FPA","Max FPA")
 
 % Random Parameters Ranges
 
@@ -104,9 +106,9 @@ averageTime=zeros(N+1);
         averageHeight(1:length(xfpar),i)=averageHeight(1:length(xfpar),i)/i+xfpar(:,3);
         averageRange(1:length(xfpar),i)=averageRange(1:length(xfpar),i)/i+xfpar(:,4);
 
-        plot(xfpar(:,4),xfpar(:,3),color(mod(i,5)+1));
+        plot(xfpar(:,4),xfpar(:,3),color(mod(i,5)+1),'HandleVisibility','off');
     end
-    title("Range vs Height for 100 Flights"), xlabel('Range, m'), ylabel('Height, m'), grid
+    title("Height vs Range for 100 Flights"), xlabel('Range, m'), ylabel('Height, m'), grid
 
     % Gets the average for time, range, and height in each row and puts
     % them in a N*3 matrix
@@ -119,6 +121,7 @@ averageTime=zeros(N+1);
 
         % Plots the average flight
         plot(FlightPath(:,3),FlightPath(:,2),'*r')
+        legend("Average Flight")
 
 
     % Plots the Range/Height vs Time by finding ploynomial. It also finds the Dirivitevs
@@ -130,7 +133,7 @@ averageTime=zeros(N+1);
         Height=polyval(p,tspan);
         plot(tspan,Height)
 
-        title("Time vs Height"),xlabel('Time, s'), ylabel('Height, m'), grid
+        title("Height vs Time"),xlabel('Time, s'), ylabel('Height, m'), grid
 
         subplot(2,1,2)
         plot(FlightPath(:,1),FlightPath(:,3))
@@ -139,7 +142,7 @@ averageTime=zeros(N+1);
         Range=polyval(p,tspan);
         plot(tspan,Range)
 
-        title("Time vs Range"),xlabel('Time, s'), ylabel('Range, m'), grid
+        title("Range vs Time"),xlabel('Time, s'), ylabel('Range, m'), grid
 
         
 % Take the dirivative of TvRange and TvHeight
@@ -149,13 +152,13 @@ averageTime=zeros(N+1);
         subplot(2,1,1)
 
         plot(tspan,Rp_num)
-        title("Time vs Range Prime"), xlabel('Time, s'), ylabel('Range Prime, m'), grid
+        title("Range Prime vs Time"), xlabel('Time, s'), ylabel('Range Prime, m'), grid
 
         Hp_num=Num_Der_Cent(tspan,Height);
 
         subplot(2,1,2)
         plot(tspan,Hp_num)
-        title("Time vs Height Prime"), xlabel('Time, s'), ylabel('Height Prime, m'), grid
+        title("Height Prime vs Time"), xlabel('Time, s'), ylabel('Height Prime, m'), grid
 
 
 
