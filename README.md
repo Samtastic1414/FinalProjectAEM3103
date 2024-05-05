@@ -13,28 +13,28 @@
 | Maximum | 7.5            | .4                      |
     
 
-  This study created several posible flights for a paper airplane. I created a simulation of flights with diffrent flight path angles, and flights with diffrent starting velocities. Then I compaired the results of each flight to see how changing each variable compaired to eachother.
+  This study created several possible flights for a paper airplane. I created a simulation of flights with different flight path angles, and flights with different starting velocities. Then I compared the results of each flight to see how changing each variable compared to each other.
 
   For changing velocities when v is maximized (Green line) the plane quickly increases in altitude, then stalls before fluttering to the ground.
-  Both the nominal flight path angle and velocity the flights are mostly linear, other flights flutter alot, but theis flights are verry consistant
+  Both the nominal flight path angle and velocity the flights are mostly linear, other flights flutter a lot, but these flights are verry consistent
 
-  Then I created 100 diffrent flights with varying inital velocities [+2, +7.5] m/s and flight path angles [-0.5, +0.4] rad. I then averaged all of the flights range, time, and height to get an average (Expected) flight.
+  Then I created 100 different flights with varying initial velocities [+2, +7.5] m/s and flight path angles [-0.5, +0.4] rad. I then averaged all of the flights range, time, and height to get an average (Expected) flight.
 
 The flights with max FPA and Velocity flew in a loop to start the flight.
-The average flight (Red Stars) created a small hump in the begining of the flight that slowly evened out as the flight went on.
+The average flight (Red Stars) created a small hump in the beginning of the flight that slowly evened out as the flight went on.
 
-  Then I created two plots of the average flight ((Range v Time) and (Height v Time)). Useing these graphs I fit a polynomial to each graph. Useing the polynomials I found the dirivative of both functions using [Num_Der_Cent](Num_Der_Cent.m). I Then ploted the dirivtiaves of both polynomials.
+  Then I created two plots of the average flight ((Range v Time) and (Height v Time)). Using these graphs I fit a polynomial to each graph. Using the polynomials I found the derivative of both functions using [Num_Der_Cent](Num_Der_Cent.m). I Then plotted the derivatives of both polynomials.
 
   Range v Time is a fairly linear plot, but Height v Time is a bit more wavey.
 
-  For the dirivatives for each graph 
+  For the derivatives for each graph 
   Range' v Time is a negative sin wave that is dampened and converges to 3.5
   Height' v Time is a cos wave that is dampened to -.8
   
  
   # Code Listing
   A list of each function/script and a single-line description of what it does.  The name of the function/script should link to the file in the repository on GitHub.
-  [Num_Der_Cent](Num_Der_Cent.m) This uses the centeral dirivative method to take the diricative of a function 
+  [Num_Der_Cent](Num_Der_Cent.m) This uses the central derivative method to take the derivative of a function 
   [EqMotion](EqMotion.m) This creates a flight trajectory for a paper plane given (t,x)
 
   # Figures
@@ -48,12 +48,15 @@ The average flight (Red Stars) created a small hump in the begining of the fligh
 
   ## Fig. 2: Monte Carlo Simulation
   <2D trajectories simulated using random sampling of parameters, overlay polynomial fit onto plot.>
+  ![100 Random Flights](Figures/Figure2.png)
 
   Briefly describe what is being shown in the figure.
 
  ## Fig. 3: Time Derivatives
  <Time-derivative of height and range for the fitted trajectory>
-
+   
+![Height and Range v Time](Figures/Figure3.png)
+   
+![Dir of Height and Range v Time](Figures/Figure4.png)
   Briefly describe what is being shown in the figure.
 
-  (Below are for teams of 2-3 people)
