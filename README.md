@@ -5,10 +5,11 @@
 
   ## Summary of Findings
   <Show the variations studied in a table>
-|             Type            |   Minimum    |    Nominal     |    Maximum    |
-|-----------------------------|--------------|----------------|---------------|
-|       Velocity(m/s)         | git status   | git status     | git status    |
-|   Flight path angle (Rad)   | git diff     | git diff       | git diff      |
+|         | Velocity (M/S) | Flight Path Angle (Rad) |
+|---------|----------------|-------------------------|
+| Minimum | 2              | -.5                     |
+| Nominal | 3.55           | -.18                    |
+| Maximum | 7.5            | .4                      |
   Summarized what was accomplished in this study.  Describe 2-4 observations from simulating the flight path.
   Reference the figures below as needed.
 
