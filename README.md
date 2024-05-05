@@ -12,8 +12,6 @@
 | Nominal | 3.55           | -.18                    |
 | Maximum | 7.5            | .4                      |
     
-  Summarized what was accomplished in this study.  Describe 2-4 observations from simulating the flight path.
-  Reference the figures below as needed.
 
   This study created several posible flights for a paper airplane. I created a simulation of flights with diffrent flight path angles, and flights with diffrent starting velocities. Then I compaired the results of each flight to see how changing each variable compaired to eachother.
 
@@ -33,16 +31,18 @@ The average flight (Red Stars) created a small hump in the begining of the fligh
   Range' v Time is a negative sin wave that is dampened and converges to 3.5
   Height' v Time is a cos wave that is dampened to -.8
   
-  *If the analysis falls short of the goal, this is your chance to explain what was done or what were the barriers.*
  
   # Code Listing
   A list of each function/script and a single-line description of what it does.  The name of the function/script should link to the file in the repository on GitHub.
+  [Num_Der_Cent](Num_Der_Cent.m) This uses the centeral dirivative method to take the diricative of a function 
+  [EqMotion](EqMotion.m) This creates a flight trajectory for a paper plane given (t,x)
 
   # Figures
 
   ## Fig. 1: Single Parameter Variation
   <2D trajectory simulated by varying single parameter at at time>
   <The above plot should also show the nominal trajectory>
+  ![Min Max and Nominal Plots](Figures/Figure1.png)
 
   Briefly describe what is being shown in the figure.
 
